@@ -1,4 +1,4 @@
-# MS934-slides
+# MA934-slides
 
 Lecturing slides for MA934 - Numerical algorithms and optimisation
 
