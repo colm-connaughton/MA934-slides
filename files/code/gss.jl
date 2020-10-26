@@ -14,12 +14,12 @@ function minimise(f, triple, tol; verbose=false)
     # ratio in case the function caller forgets to do this.
     ϕ = 0.5*(sqrt(5.0)-1.0)
     a = triple[1]
-    b = triple[2]
+    b = triple[3]
     c = b - (b-a)*ϕ
     (fa, fc, fb) = (f(a), f(c), f(b))
      # Check that this is indeed a bracketing triple
     if !(fa > fc && fb > fc && b > a)
-        error(triple, " does not bracket a minimum: values are ", (fa, fb, fc))
+        error(triple, " does not bracket a minimum: values are ", (fa, fc, fb))
     end
         
     n = 0 
