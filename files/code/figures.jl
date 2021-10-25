@@ -39,7 +39,7 @@ function plot_logistic_regression_data(xrange, β0, n)
     X[:,2] = rand(Uniform(xrange[1], xrange[2]), n)
     Y = [rand(Bernoulli(sigmoid(β0⋅X[i,:]))) for i in 1:n]
     
-    p = Plots.scatter(X[:,2], Y, label="", xlabel="X : hours", ylabel="Y : crazy (yes/no)", yrange=(-0.1,1.25))
+    p = Plots.scatter(X[:,2], Y, label="", xlabel="X : hours", ylabel="Y : eye strain (yes/no)", yrange=(-0.1,1.25))
     
     # Overlay the sigmoid curve
     xgrid = range(xrange[1],stop=xrange[2],length=n)
