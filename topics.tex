@@ -1,0 +1,177 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{palatino}
+\usepackage{helvet}
+\usepackage{times}
+\usepackage{layout}
+\usepackage[a4paper,top=2.0cm, right=2.0cm, bottom=2.0cm, left=2.0cm]{geometry}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{url}
+\usepackage{multicol,caption}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\setlist{nolistsep}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{{\hvnb MathSys CDT}}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\newcommand*{\helvetica}{\fontfamily{phv}\selectfont}
+\newcommand*{\helveticanarrow}{\fontfamily{phv}\fontseries{mc}\selectfont}
+\newcommand*{\hvnb}{\fontfamily{phv}\fontseries{bc}\selectfont}
+\newcommand*{\palatino}{\fontfamily{ppl}\selectfont}
+\newcommand*{\timesroman}{\fontfamily{ptm}\selectfont}
+
+% Commands to produce formatted layout
+\newcommand*{\projecttitle}[1]{\begin{center}\Large\hvnb{\color{blue} #1}\end{center}}
+\newcommand*{\supervisor}[1]{\noindent \hvnb{\color{black}Lecturer:} \helveticanarrow{#1}\\}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\xv}{\mathbf{x}}
+\newcommand*{\yv}{\mathbf{y}}
+\newcommand*{\cv}{\mathbf{c}}
+\newcommand*{\bv}{\mathbf{b}}
+\newcommand*{\av}{\mathbf{a}}
+\newcommand*{\dv}{\mathbf{d}}
+
+% Support for multiple bibliographies
+\usepackage[sectionbib,numbers]{natbib}
+\usepackage{chapterbib}
+
+\usepackage[compact]{titlesec}
+\usepackage{lipsum}
+\usepackage{xcolor}
+
+
+\titleformat{\section}
+  {\large\hvnb\color{blue}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\hvnb}{\thesubsection}{1em}{}
+\titleformat{\chapter}
+  {\Large\hvnb\color{blue}}{Lecture \thechapter:}{1em}{}
+
+\newenvironment{Figure} 
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+
+\begin{document}
+\setlength{\bibsep}{0.2pt}
+\setlength{\itemsep}{0.2pt}
+
+\helveticanarrow
+\rhead{\hvnb MA934 - Numerical algorithms and optimisation}
+
+\projecttitle{Sample viva questions and topics}
+
+\supervisor{Colm Connaughton} 
+
+
+
+\begin{multicols}{2}
+\section*{List of examinable topics covered in 2019}
+\begin{itemize}
+\item Floating point arithmetic, truncation error and loss of significance.
+\item Amplification of truncation error by instability
+\item Iteration, recursion and memoization, divide and conquer paradigm.
+\item Computational complexity of recursive algorithms
+\item Solving linear recursion relations
+\item Sorting: insertion sort, Shellsort and mergesort
+\item Structural recursion: linked lists and binary trees. Basic idea of how to represent recursive data strunctures in Julia.
+\item Binary tree search
+\item Interval membership and Fenwick trees - connection to Gillespie algorithm for stochastic simulation
+\item Bracket-and-bisect method for root finding.
+\item Derivation and properties of Newton-Raphson method for root finding, convergence properties.
+\item Newton-Raphson method in $\mathbb{R}^n$.
+\item Convex functions, convex sets and convex optimisation
+\item Linear programming: infeasible, unbounded and solvable problems, fundamental theorem of linear programming
+\item Writing a linear programme in standard form, slack variables, basic feasible vectors.
+\item Idea of Dantzig Simplex Algorithm (but {\bf not} detailed calculations).
+\item Ideas of golden section search for one-dimensional minimisation (but {\bf not} detailed derivation.)
+\item Method of steepest descent for unconstrained optimisation in $\mathbb{R}^n$.
+\item Stochastic gradient descent.
+\item Dual numbers and automatic differentiation.
+\item Taylor's theorem and derivation of finite difference formulae for numerical approximation of derivatives.
+\item Properties of Fourier transforms: transform of real functions, shift property, convolution theorem, Wiener-Kinchin theorem  
+\item Sampling of functions, statement of the sampling theorem, Nyquist frequency, aliasing problem
+\item Derivation of discrete Fourier Transform
+\item Danielson-Lanczos lemma and Fast Fourier Transform algorithm.
+\end{itemize}
+
+\section*{Sample viva questions}
+\begin{enumerate}
+\item Explain the concept of machine precision and how loss of significance occurs in floating point arithmetic.
+\item
+Solve recurrence relations like the following:
+\begin{displaymath}
+a_n = a_{n-1} + a_{n-2}
+\end{displaymath}
+with $a_0=1$ and $a_1=1$.
+\item
+Write down an example of a recursive function (other than the factorial function!) and explain how it works. Explain the idea of a "divide-and-conquer" algorithm and give an example.
+\item
+Explain how the Shellsort algorithm works and why it is faster than insertion sort.
+\item
+Explain how the mergesort algorithm works and write down an equation for its computational complexity
+\item
+Consider a recurrence relation like the following for the computational complexity of a hypothetical divide-and-conquer algorithm:
+\begin{displaymath}
+F(n) = 2 F\left(\frac{n}{2}\right) +n
+\end{displaymath}
+with $F(1)=1$. Explain how to solve this recursion.
+\item
+What is meant by structural recursion and give some examples.
+\item
+Explain what is a linked list and describe how it compares to a linear array for storing a sequence of objects. Describe how to create a linked list in Julia.
+\item
+Explain what is a binary tree and outline how it can be used to perform search on a set of key-value pairs in $O(\log n)$ time where $n$ is the number of elements in the set to be searched.
+\item
+What is a Fenwick tree and how does it differ from a binary search tree? Explain how a Fenwick tree can be used to solve the interval membership problem efficiently. 
+\item
+Explain what it means for an interval $(a,b)$ to bracket a root of a function $f(x)$ of a single variable and explain how the bracket-and-bisect algorithm works.
+\item
+Derive the Newton Raphson method for finding roots of a function of a single variable and explain its advantages and disadvantages.
+\item
+Consider a set of $n$ nonlinear equations in $\mathbb{R}^n$:
+\begin{displaymath}
+\mathbf{F}(\xv) = 0.
+\end{displaymath}
+Derive the Newton Raphson method for multi-dimensional root finding. 
+\item 
+Explain the concepts of convex sets, convex functions and convex optimisation problems. Why is convexity so important in the theory of optimisation?
+\item
+What is a linear programme? Explain why the feasible set is a polygon in $\mathbb{R}^n$ and why the solution (if it exists) must be at a vertex of the feasible set.
+\item
+Explain how to put a general linear programme in standard form.
+\item
+Explain how Dantzig's simplex algorithm works.
+\item
+What does it mean for a triple $(a, b, c)$ to bracket a minimum of a function $f(x)$ of a single variable? Explain the golden section search algorithm to find a local minimum of a function of a single variable starting from a bracketing triple.
+\item
+Given a function, $f(\xv)$ of $n$ variables, what is the gradient of $f$? Given a point $\xv \in \mathbb{R}^n$ and a direction $\dv \in \mathbb{R}^n$, what is the line minimiser of $f(\xv)$ from $\xv$ in the direction $\dv$? Explain how the Method of Steepest Descent works.
+\item
+Describe the stochastic gradient descent algorithm and explain what types of optimisation problems it is intended to solve.
+\item
+Write down the addition, multiplication and conjugation rules for dual numbers. Explain how dual arithmetic provides automatic differentiation of functions of a single variable. 
+\item
+Derive the convolution theorem and explain why it is important.
+\item
+Define the power spectrum and autocorrelation function of a function, $f(t)$, and explain what they mean. Show that the autocorrelation function is the Fourier transform of the power spectrum.
+\item
+What is the Nyquist frequency in discrete signal processing? Why is it important? Explain the aliasing problem.
+\item
+Outline how the discrete Fourier transform is obtained from its continuous version.
+\item
+Describe how the divide-and-conquer approach to the discrete Fourier transform leads to the Fast Fourier Transform algorithm.
+\end{enumerate}
+
+\end{multicols}
+\end{document}
