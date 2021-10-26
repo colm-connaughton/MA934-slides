@@ -77,7 +77,7 @@
 
 
 \begin{multicols}{2}
-\section*{List of examinable topics covered in 2019}
+\section*{List of examinable topics covered in 2021}
 \begin{itemize}
 \item Floating point arithmetic, truncation error and loss of significance.
 \item Amplification of truncation error by instability
@@ -85,7 +85,8 @@
 \item Computational complexity of recursive algorithms
 \item Solving linear recursion relations
 \item Sorting: insertion sort, Shellsort and mergesort
-\item Structural recursion: linked lists and binary trees. Basic idea of how to represent recursive data strunctures in Julia.
+\item Structural recursion: linked lists and binary trees. Basic idea of how to represent recursive data structures in Julia.
+\item Data structures and the operations they are designed for: arrays, linked lists, stacks, queues, hash tables, binary trees. 
 \item Binary tree search
 \item Interval membership and Fenwick trees - connection to Gillespie algorithm for stochastic simulation
 \item Bracket-and-bisect method for root finding.
@@ -120,7 +121,7 @@ with $a_0=1$ and $a_1=1$.
 \item
 Write down an example of a recursive function (other than the factorial function!) and explain how it works. Explain the idea of a "divide-and-conquer" algorithm and give an example.
 \item
-Explain how the Shellsort algorithm works and why it is faster than insertion sort.
+Explain how the Shellsort algorithm works and why it is faster than insertion sort. Given an array of 8 numbers in a random order, write down the intermediate partial sorts obtained for Shellsort with strides $\left\{4, 2, 1\right\}$. 
 \item
 Explain how the mergesort algorithm works and write down an equation for its computational complexity
 \item
@@ -133,6 +134,8 @@ with $F(1)=1$. Explain how to solve this recursion.
 What is meant by structural recursion and give some examples.
 \item
 Explain what is a linked list and describe how it compares to a linear array for storing a sequence of objects. Describe how to create a linked list in Julia.
+\item What are stacks  and queues?
+\item Explain what is a hash table and how it works.
 \item
 Explain what is a binary tree and outline how it can be used to perform search on a set of key-value pairs in $O(\log n)$ time where $n$ is the number of elements in the set to be searched.
 \item
@@ -155,6 +158,8 @@ What is a linear programme? Explain why the feasible set is a polygon in $\mathb
 Explain how to put a general linear programme in standard form.
 \item
 Explain how Dantzig's simplex algorithm works.
+\item Explain how to find a starting vertex for the simplex algorithm.
+\item Explain how to formulate the quantile regression problem as a linear programme.
 \item
 What does it mean for a triple $(a, b, c)$ to bracket a minimum of a function $f(x)$ of a single variable? Explain the golden section search algorithm to find a local minimum of a function of a single variable starting from a bracketing triple.
 \item
@@ -163,6 +168,33 @@ Given a function, $f(\xv)$ of $n$ variables, what is the gradient of $f$? Given 
 Describe the stochastic gradient descent algorithm and explain what types of optimisation problems it is intended to solve.
 \item
 Write down the addition, multiplication and conjugation rules for dual numbers. Explain how dual arithmetic provides automatic differentiation of functions of a single variable. 
+\item
+Derive the forward and backward Euler algorithms for solving the system of ordinary differential equations
+\begin{displaymath}
+\frac{d \mathbf{u}}{d t} = \mathbf{F}\left(\mathbf{u}\right) \hspace{1.0cm} \mbox{with $\mathbf{u}(0)=\mathbf{U}$},
+\end{displaymath}
+and explain the difference between global and step-wise error.
+\item
+Explain the difference between explicit and implicit time-stepping algorithms. Derive the implicit trapezoidal method:
+\begin{displaymath}
+\mathbf{u}_{i+1} = \mathbf{u}_i + \frac{h}{2}(\mathbf{F}_i + \mathbf{F}_{i+1}).
+\end{displaymath}
+\item
+Derive the improved Euler method
+\begin{eqnarray*}
+\mathbf{u}^*_{i+1} &=& \mathbf{u}_i + h \mathbf{F}_i\\
+\mathbf{F}^*_{i+1} &=& \mathbf{F}(\mathbf{u}^*_{i+1})\\
+\mathbf{u}_{i+1} &=& \mathbf{u}_i + \frac{h}{2}\left[\mathbf{F}_i + \mathbf{F}^*_{i+1} \right].
+\end{eqnarray*}
+\item
+Explain how adaptive timestepping works and show that for a method with stepwise error of $O(h^n)$ that
+\begin{displaymath}
+h_\mathbf{new} = \left(\frac{\varepsilon}{\Delta}\right)^\frac{1}{n} \,h_\mathbf{old}
+\end{displaymath}
+where $\varepsilon$ is the absolute error tolerance and $\Delta$ is the current estimated stepwise error.
+\item
+What is a stiff problem and why are they difficult to solve?
+
 %\item
 %Derive the convolution theorem and explain why it is important.
 %\item
